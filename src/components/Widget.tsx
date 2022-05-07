@@ -1,15 +1,8 @@
 import { ChatTeardropDots } from 'phosphor-react';
-import { Popover } from '@headlessui/react';
+import { Popover } from '@headlessui/react'; // a biblioteca headlessui irá controlar o abrir e fechar o texto ao clicar no button de feedback
 import { WidgetForm } from './WidgetForm';
 
 export function Widget() {
-    /* const [isWidgetOpen, setIsWidgetOpen] = useState(false);
-
-    function toggleWidgetVisibility() {
-        setIsWidgetOpen(!isWidgetOpen);
-        a biblioteca headlessui irá controlar o abrir e fechar o texto ao clicar no button de feedback
-    } */
-
     return (
         <Popover className="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex-col items-end">
             <Popover.Panel>
