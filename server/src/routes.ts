@@ -5,7 +5,7 @@ import { NodemailerMailAdapter } from './adapters/nodemailer/nodemailerMailAdapt
 
 
 export const routes = express.Router();
-
+// tipos de requisição
 // GET - Buscar informações
 // POST - Cadastrar informações
 // PUT = Atualizar informações de uma entidade
