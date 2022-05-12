@@ -1,29 +1,47 @@
+## Meu projeto de Feedback
+
+
+# Contexto
+
+O usuário pode reportar um feedback da página que está usando no momento, e incluir uma foto desta página no feedback.
+
+# Para visualizar
+
+Clique no link disponível na seção sobre do repositório deste projeto.
+
+Ou cole este link no seu navegador:
+https://nlw-feedback-mensagens.vercel.app/
+
 # Tecnologias usadas
 
+Front end: 
 - React - componentes de classe e função
-
 - TypeScript
-
 - Express
+- Deploy na Vercel
 
- - SQLite
+Back end:
+- TypeScript
+- Postgresql
+- Princípios do Solid
+- Prisma
+- Jest
+- Deploy na Railway
 
- - Princípios do Solid
+# Habilidades desenvolvidas
 
- - Prisma
+- Integração back e front end
 
- - Jest
+- Colocar o projeto com acessibilidade por meio da biblioteca Popover
 
- # Habilidades
+- Configurar CSS com Tailwind
 
- - Colocar o projeto com acessibilidade por meio da biblioteca Popover
+- Fazer screenshot da tela e enviar para o back-end
 
- - Configurar CSS com Tailwind
+- Armazenar o feedback do usuário num banco de dados
 
- - Fazer screenshot da tela e enviar para o back-end
+- Envio de email ao responsável pela página, usando o feedback
 
- - Armazenar o feedback do usuário num banco de dados
+# Formato e origem
 
- # Formato e origem
-
- - Projeto desenvolvido durante a 8ª edição NLW da Rockseat
+- Projeto desenvolvido durante a 8ª edição NLW da Rockseat
