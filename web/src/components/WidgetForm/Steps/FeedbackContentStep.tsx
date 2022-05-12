@@ -25,7 +25,7 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
         await api.post('/feedbacks', {
             type: feedbackType,
             comment,
-            screenshot,
+            // screenshot, -causando erro 413 payload too large
         });
         setIsSendingFeedback(false);
         onFeedbackSent();
