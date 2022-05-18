@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  server-back:
+    build: ./server
+    image: server-back
+    ports:
+      - 3333:3333
+
+  db:
+    image: postgres:alpine3.15
+    restart: always
+    ports:
+      - 8080:8080
+
+  web-front:
+    build: ./web
+    image: web-front
+    tty: true
+    stdin_open: true
+    environment:
+      - VITE_API_URL=http://localhost:3333
+    ports:
+      - 3001:3001
+    depends_on:
+      - "server-back"
+      - "db"
+
+networks:
+  default:
+
+  
