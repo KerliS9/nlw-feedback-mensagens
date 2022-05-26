@@ -1,17 +1,20 @@
-FROM node:14 AS web
+FROM node:16 AS web 
+# a tecnologia base para esta container
 
 WORKDIR /src
+# pasta raiz do container
 
 COPY package.json .
+# copia o package json para o arquivo definido ao lado direito, neste caso, o caminho definido na workdir
 
 RUN npm install
+# instala as dependências
 
 COPY . .
+# as informações que estão dentro da pasta definida a esquerda serão copiadas para o lado direito conforme o caminho definido
 
 RUN npm run build
+# cria uma pasta para ser publicada na internet - deploy
 
-FROM nginx
-
-COPY --from=web /app/build /usr/share/nginx/html
-
-ENTRYPOINT ["nginx", "-g", "daemon off"]
+CMD ["npm", "start"]
+# para iniciar o projeto depois de baixar

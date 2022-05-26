@@ -1,14 +1,17 @@
 version: "3"
+# também é possível usar somente o docker-compose sem os dockerfile, desde que todas as configurações viessem para este arquivo
 
 services:
+# ver as anotações do web-front e seguir o mesmo padrão
   server-back:
     container_name: server-back-nlw
     build: ./server
-    image: server-back
     ports:
       - 3333:3333
     environment:
     - DATABASE_URL="file:./dev.db"
+    depends_on:
+    - db
 
   db:
     container_name: db-nlw
@@ -20,18 +23,32 @@ services:
   web-front:
     container_name: web-front-nlw
     build: ./web
-    image: web-front
+    # momento que constroi a imagem do front com o nome definido acima. Buscando dentro da pasta ./web um dockerfile.
     tty: true
+    # permite acessar de modo interativo no container, com exec -it 'container_name' bash
     stdin_open: true
+    # analisar se precisa associar com a linha acima????
+    command: bash
+    restart: always
+    volumes:
+      # Lista de volumes (diretórios) mapeados de fora para dentro do container
+      # Monta o diretório atual, com todos os dados do projeto, 
+      # dentro do diretório /src conforme definido no dockerfile do front
+      - ./:/src
     environment:
       - VITE_API_URL=http://localhost:3333
+      # ??? buscar na documentação do docker relacionado ao vite.?????
     ports:
-      - 3001:3001
+      - 3001:3000
+      # porta do lado direito é do container, noc caso do node é 3000.
     depends_on:
-      - "server-back"
-      - "db"
+      - server-back
 
 networks:
   default:
+    name: nlw
 
-  
+  # docker-compose up 
+
+  # estudar sobre o heroku - bloco 25.
+  # é possível subir vários containers ao mesmo tempo, ou será necessário conectá-los com link dentro do heroku?
