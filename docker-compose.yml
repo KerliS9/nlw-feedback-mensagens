@@ -14,6 +14,7 @@ services:
     - db
 
   db:
+  # neste formato já cria a base necessária para o banco de dados - confirmar na documentação se está com as portas corretas e base necessária
     container_name: db-nlw
     image: postgres:alpine3.15
     restart: always
@@ -25,10 +26,11 @@ services:
     build: ./web
     # momento que constroi a imagem do front com o nome definido acima. Buscando dentro da pasta ./web um dockerfile.
     tty: true
-    # permite acessar de modo interativo no container, com exec -it 'container_name' bash
+    # Mesmo que `docker run -t
     stdin_open: true
-    # analisar se precisa associar com a linha acima????
+    # mesmo que `docker run -i`
     command: bash
+    # as primeiras três linhas acima, em conjunto, permitem acessar de modo interativo no container, com exec -it 'container_name' bash
     restart: always
     volumes:
       # Lista de volumes (diretórios) mapeados de fora para dentro do container
@@ -52,3 +54,9 @@ networks:
 
   # estudar sobre o heroku - bloco 25.
   # é possível subir vários containers ao mesmo tempo, ou será necessário conectá-los com link dentro do heroku?
+
+# As chaves `tty`, `stdin_open` e `command` fazem com que o container fique
+# rodando em segundo plano, bem como tornam possível o uso do comando
+# `docker attach`, já deixando o terminal atual acoplado ao container, direto
+# no bash. Apesar disso, utilizar o attach mais de uma vez irá replicar o
+# terminal, portanto é melhor utilizar o comando `docker exec`.
